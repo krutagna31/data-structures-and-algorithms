@@ -1,4 +1,4 @@
-import TreeNode from "../../../../../data-structures/tree/binary-tree/src/tree-node";
+import TreeNode from "../../../../data-structures/tree/binary-tree/src/tree-node";
 
 /**
  * @template T - The type of value stored in the tree node
@@ -7,13 +7,13 @@ import TreeNode from "../../../../../data-structures/tree/binary-tree/src/tree-n
  */
 function inorder<T>(root: TreeNode<T> | null): T[] {
   const values: T[] = [];
-  const inorderRecursive = (node: TreeNode<T> | null): void => {
+  const _inorder = (node: TreeNode<T> | null): void => {
     if (node === null) return;
-    inorderRecursive(node.left);
+    _inorder(node.left);
     values.push(node.val);
-    inorderRecursive(node.right);
+    _inorder(node.right);
   };
-  inorderRecursive(root);
+  _inorder(root);
   return values;
 }
 
