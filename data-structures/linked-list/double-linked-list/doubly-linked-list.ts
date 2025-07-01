@@ -1,16 +1,16 @@
-import ListNode from "./list-node";
+import ListNode from "./doubly-list-node";
 
 /**
- * Class representing a singly linked list
+ * Class representing a doubly linked list
  * @template {T} - The type of value stored in the linked list
  */
-class SinglyLinkedList<T> {
+class DoublyLinkedList<T> {
   head: ListNode<T> | null;
   tail: ListNode<T> | null;
   size: number;
 
   /**
-   * Creates a singly linked list instance
+   * Creates a doubly linked list instance
    */
   constructor() {
     this.head = null;
@@ -30,6 +30,7 @@ class SinglyLinkedList<T> {
       this.tail = next;
     } else {
       next.next = this.head;
+      this.head.prev = next;
       this.head = next;
     }
     this.size++;
@@ -47,6 +48,7 @@ class SinglyLinkedList<T> {
       this.tail = next;
     } else {
       this.tail.next = next;
+      next.prev = this.tail;
       this.tail = next;
     }
     this.size++;
@@ -67,52 +69,51 @@ class SinglyLinkedList<T> {
     } else if (index === this.size) {
       this.addLast(val);
     } else {
-      const prev = this.get(index - 1);
       const next = new ListNode(val);
+      const prev = this.get(index - 1);
+      next.prev = prev;
       next.next = prev.next;
+      prev.next.prev = next;
       prev.next = next;
       this.size++;
     }
   }
 
   /**
-   * Removes first element from the linked list
+   * Removes element from the start of linked list
    * @throws {Error} - An error when the linked list is empty
-   * @returns {T} - The removed element;
+   * @returns {T} - The removed element
    */
   removeFirst(): T {
     if (this.isEmpty()) throw new Error("Linked List Underflow");
-    let removed = this.head;
+    const removed = this.head;
     if (this.size === 1) {
       this.head = null;
       this.tail = null;
     } else {
       this.head = this.head.next;
+      this.head.prev = null;
+      removed.next = null;
     }
     this.size--;
     return removed.val;
   }
 
   /**
-   * Removes last element from the linked list
+   * Remove last element from the linked list
    * @throws {Error} - An error when the linked list is empty
    * @returns {T} - The removed element
    */
   removeLast(): T {
     if (this.isEmpty()) throw new Error("Linked List Underflow");
-    let removed = this.tail;
+    const removed = this.tail;
     if (this.size === 1) {
       this.head = null;
       this.tail = null;
     } else {
-      let prev = this.head;
-      let curr = this.head;
-      while (curr.next) {
-        prev = curr;
-        curr = curr.next;
-      }
-      prev.next = null;
-      this.tail = prev;
+      this.tail = this.tail.prev;
+      this.tail.next = null;
+      removed.prev = null;
     }
     this.size--;
     return removed.val;
@@ -132,9 +133,11 @@ class SinglyLinkedList<T> {
     } else if (index === this.size - 1) {
       return this.removeLast();
     } else {
-      const prev = this.get(index - 1);
-      const removed = prev.next;
-      prev.next = prev.next.next;
+      const removed = this.get(index);
+      removed.prev.next = removed.next;
+      removed.next.prev = removed.prev;
+      removed.prev = null;
+      removed.next = null;
       this.size--;
       return removed.val;
     }
@@ -148,69 +151,29 @@ class SinglyLinkedList<T> {
    */
   get(index: number): ListNode<T> {
     if (index < 0 || index > this.size - 1) throw new Error("Invalid Index");
-    let curr = this.head;
-    for (let i = 0; i < index; i++) {
-      curr = curr.next;
+    let curr;
+    if (index < this.size / 2) {
+      curr = this.head;
+      for (let i = 0; i < index; i++) {
+        curr = curr.next;
+      }
+    } else {
+      curr = this.tail;
+      for (let i = this.size - 1; i > index; i--) {
+        curr = curr.prev;
+      }
     }
     return curr;
   }
 
   /**
    * Sets the element at the specified index
-   * @param {number} index - The index of node which needs to be set
+   * @param {number} index  The index of node which needs to be set
    * @param {T} val - The new value which needs to be set
    */
   set(index: number, val: T): void {
     const curr = this.get(index);
     curr.val = val;
-  }
-
-  /**
-   * Reverses the linked list
-   * @returns {void}
-   */
-  reverse(): void {
-    this.tail = this.head;
-    let curr = this.head;
-    let prev = null;
-    while (curr) {
-      const next = curr.next;
-      curr.next = prev;
-      prev = curr;
-      curr = next;
-    }
-    this.head = prev;
-  }
-
-  /**
-   * Checks whether linked list contains a value
-   * @param {T} val - The value which should exist in the linked list
-   * @returns {boolean} - `true` if value exists in linked list, `false` otherwise
-   */
-  includes(val: T): boolean {
-    if (this.isEmpty()) return false;
-    let curr = this.head;
-    while (curr) {
-      if (curr.val === val) return true;
-      curr = curr.next;
-    }
-    return false;
-  }
-
-  /**
-   * Finds the index at which value is present in the linked list
-   * @param {T} val - The value whose index needs to be found
-   * @returns {number} - The index of value if it's present, -1 otherwise
-   */
-  indexOf(val: T): number {
-    let curr = this.head;
-    let index = 0;
-    while (curr) {
-      if (curr.val === val) return index;
-      curr = curr.next;
-      index++;
-    }
-    return -1;
   }
 
   /**
@@ -230,21 +193,11 @@ class SinglyLinkedList<T> {
 
   /**
    * Checks whether the linked list is empty
-   * @returns {boolean} - `true` if linked list if empty, `false` otherwise
+   * @returns {boolean} - `true`if linked list is empty, `false` otherwise
    */
   isEmpty(): boolean {
     return this.size === 0;
   }
-
-  /**
-   * Clears the linked list
-   * @returns {void}
-   */
-  clear(): void {
-    this.head = null;
-    this.tail = null;
-    this.size = 0;
-  }
 }
 
-export default SinglyLinkedList;
+export default DoublyLinkedList;

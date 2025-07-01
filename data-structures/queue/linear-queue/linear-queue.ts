@@ -1,4 +1,4 @@
-import SinglyLinkedList from "../../linked-list/singly-linked-list/src/singly-linked-list";
+import SinglyLinkedList from "../../linked-list/singly-linked-list/singly-linked-list";
 
 /**
  * Class representing a queue
@@ -23,7 +23,7 @@ class Queue<T> extends SinglyLinkedList<T> {
     if (super.isEmpty()) {
       throw new Error("Queue Underflow");
     }
-    return super.removeFirst();
+    return super.deleteFirst();
   }
 
   /**

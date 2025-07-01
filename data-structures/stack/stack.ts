@@ -1,4 +1,4 @@
-import SinglyLinkedList from "../linked-list/singly-linked-list/src/singly-linked-list";
+import SinglyLinkedList from "../linked-list/singly-linked-list/singly-linked-list";
 
 /**
  * Class representing a stack
@@ -23,7 +23,7 @@ class Stack<T> extends SinglyLinkedList<T> {
     if (super.isEmpty()) {
       throw new Error("Stack Underflow");
     }
-    return super.removeFirst();
+    return super.deleteFirst();
   }
 
   /**
