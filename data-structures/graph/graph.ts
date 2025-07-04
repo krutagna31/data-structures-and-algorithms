@@ -30,25 +30,6 @@ class Graph {
       (vertex) => vertex !== vertex1
     );
   }
-
-  dfs(starting: string): string[] {
-    const result = [];
-    const visitedVertex: Record<string, boolean> = {};
-
-    const _dfs = (vertex: string) => {
-      if (visitedVertex[vertex]) {
-        return;
-      }
-      result.push(vertex);
-      visitedVertex[vertex] = true;
-      for (const neighbour of this.adjacencyList[vertex]) {
-        _dfs(neighbour);
-      }
-    };
-
-    _dfs(starting);
-    return result;
-  }
 }
 
 const graph = new Graph();
@@ -56,13 +37,9 @@ graph.addVertex("a");
 graph.addVertex("b");
 graph.addVertex("c");
 graph.addVertex("d");
-graph.addVertex("e");
-graph.addVertex("f");
 graph.addEdge("a", "b");
-graph.addEdge("a", "c");
-graph.addEdge("b", "d");
-graph.addEdge("c", "e");
-graph.addEdge("d", "e");
-graph.addEdge("d", "f");
-graph.addEdge("f", "d");
+graph.addEdge("a", "d");
+graph.addEdge("c", "b");
+graph.addEdge("c", "d");
 
+export default Graph;
