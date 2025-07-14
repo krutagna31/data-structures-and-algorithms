@@ -4,7 +4,7 @@ import SinglyLinkedList from "@/data-structures/linked-list/singly-linked-list/s
  * Class representing a stack
  * @template T - The type of value stored in the node
  */
-class Stack<T> extends SinglyLinkedList<T> {
+export default class Stack<T> extends SinglyLinkedList<T> {
   /**
    * Adds value at top of the stack
    * @param {T} value - The value to be added to the stack
@@ -39,4 +39,3 @@ class Stack<T> extends SinglyLinkedList<T> {
   }
 }
 
-export default Stack;

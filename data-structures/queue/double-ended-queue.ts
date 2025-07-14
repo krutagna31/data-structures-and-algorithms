@@ -2,7 +2,7 @@
  * Class representing a double ended queue
  * @template T - The type of elements to be stored in the double ended queue
  */
-class DoubleEndedQueue<T> {
+export default class DoubleEndedQueue<T> {
   items: T[];
   front: number;
   rear: number;
@@ -145,4 +145,3 @@ class DoubleEndedQueue<T> {
   }
 }
 
-export default DoubleEndedQueue;

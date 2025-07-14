@@ -4,17 +4,17 @@ import Comparator from "@/utils/comparator/comparator";
  * Class representing a min heap
  * @template {T} - The type of value stored in the heap
  */
-class MinHeap<T> {
-  values: T[];
+export default class MinHeap<T> {
   comparator: Comparator<T>;
+  values: T[];
 
   /**
    * Creates a min heap instance
    * @param {function(T, T):number} compareFunction - Optional custom comparator function
    */
   constructor(compareFunction?: (a: T, b: T) => number) {
-    this.values = [];
     this.comparator = new Comparator(compareFunction);
+    this.values = [];
   }
 
   /**
@@ -188,4 +188,3 @@ class MinHeap<T> {
   }
 }
 
-export default MinHeap;

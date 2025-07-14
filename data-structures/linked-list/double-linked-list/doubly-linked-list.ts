@@ -1,12 +1,12 @@
-import ListNode from "@/data-structures/linked-list/double-linked-list/list-node";
+import DoublyListNode from "@/data-structures/linked-list/double-linked-list/doubly-list-node";
 
 /**
  * Class representing a doubly linked list
  * @template {T} - The type of value stored in the linked list
  */
-class DoublyLinkedList<T> {
-  head: ListNode<T> | null;
-  tail: ListNode<T> | null;
+export default class DoublyLinkedList<T> {
+  head: DoublyListNode<T> | null;
+  tail: DoublyListNode<T> | null;
   size: number;
 
   /**
@@ -24,7 +24,7 @@ class DoublyLinkedList<T> {
    * @returns {void}
    */
   addFirst(val: T): void {
-    const next = new ListNode(val);
+    const next = new DoublyListNode(val);
     if (this.isEmpty()) {
       this.head = next;
       this.tail = next;
@@ -42,7 +42,7 @@ class DoublyLinkedList<T> {
    * @returns {void}
    */
   addLast(val: T): void {
-    const next = new ListNode(val);
+    const next = new DoublyListNode(val);
     if (this.isEmpty()) {
       this.head = next;
       this.tail = next;
@@ -69,7 +69,7 @@ class DoublyLinkedList<T> {
     } else if (index === this.size) {
       this.addLast(val);
     } else {
-      const next = new ListNode(val);
+      const next = new DoublyListNode(val);
       const prev = this.get(index - 1);
       next.prev = prev;
       next.next = prev.next;
@@ -147,9 +147,9 @@ class DoublyLinkedList<T> {
    * Gets the node at the specified index
    * @param {number} index - The index of node which will be returned
    * @throws {Error} - An error when the index is invalid
-   * @returns {ListNode<T>} - The node at the index
+   * @returns {DoublyListNode<T>} - The node at the index
    */
-  get(index: number): ListNode<T> {
+  get(index: number): DoublyListNode<T> {
     if (index < 0 || index > this.size - 1) throw new Error("Invalid Index");
     let curr;
     if (index < this.size / 2) {
@@ -200,4 +200,4 @@ class DoublyLinkedList<T> {
   }
 }
 
-export default DoublyLinkedList;
+

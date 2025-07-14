@@ -1,18 +1,21 @@
-import ListNode from "@/data-structures/linked-list/singly-linked-list/list-node";
+import SinglyListNode from "@/data-structures/linked-list/singly-linked-list/singly-list-node";
+import Comparator from "@/utils/comparator/comparator";
 
 /**
  * Class representing a singly linked list
  * @template {T} - The type of value stored in the linked list
  */
-class SinglyLinkedList<T> {
-  head: ListNode<T> | null;
-  tail: ListNode<T> | null;
+export default class SinglyLinkedList<T> {
+  comparator: Comparator<T>;
+  head: SinglyListNode<T> | null;
+  tail: SinglyListNode<T> | null;
   size: number;
 
   /**
    * Creates a singly linked list instance
    */
-  constructor() {
+  constructor(compareFunction?: (a: T, b: T) => number) {
+    this.comparator = new Comparator(compareFunction);
     this.head = null;
     this.tail = null;
     this.size = 0;
@@ -24,7 +27,7 @@ class SinglyLinkedList<T> {
    * @returns {void}
    */
   addFirst(val: T): void {
-    const next = new ListNode(val);
+    const next = new SinglyListNode(val);
     if (this.isEmpty()) {
       this.head = next;
       this.tail = next;
@@ -41,7 +44,7 @@ class SinglyLinkedList<T> {
    * @returns {void}
    */
   addLast(val: T): void {
-    const next = new ListNode(val);
+    const next = new SinglyListNode(val);
     if (this.isEmpty()) {
       this.head = next;
       this.tail = next;
@@ -70,7 +73,7 @@ class SinglyLinkedList<T> {
       this.addLast(val);
     } else {
       const prev = this.get(index - 1);
-      const next = new ListNode(val);
+      const next = new SinglyListNode(val);
       next.next = prev.next;
       prev.next = next;
       this.size++;
@@ -154,9 +157,9 @@ class SinglyLinkedList<T> {
    * Gets the node at the specified index
    * @param {number} index - The index of node which will be returned
    * @throws {Error} - An error when the index is invalid
-   * @returns {ListNode<T>} - The node at the index
+   * @returns {SinglyListNode<T>} - The node at the index
    */
-  get(index: number): ListNode<T> {
+  get(index: number): SinglyListNode<T> {
     if (index < 0 || index > this.size - 1) {
       throw new Error("Invalid Index");
     }
@@ -179,23 +182,6 @@ class SinglyLinkedList<T> {
   }
 
   /**
-   * Reverses the linked list
-   * @returns {void}
-   */
-  reverse(): void {
-    this.tail = this.head;
-    let curr = this.head;
-    let prev = null;
-    while (curr) {
-      const next = curr.next;
-      curr.next = prev;
-      prev = curr;
-      curr = next;
-    }
-    this.head = prev;
-  }
-
-  /**
    * Checks whether linked list contains a value
    * @param {T} val - The value which should exist in the linked list
    * @returns {boolean} - `true` if value exists in linked list, `false` otherwise
@@ -207,7 +193,7 @@ class SinglyLinkedList<T> {
 
     let curr = this.head;
     while (curr) {
-      if (curr.val === val) {
+      if (this.comparator.equal(curr.val, val)) {
         return true;
       }
       curr = curr.next;
@@ -224,7 +210,7 @@ class SinglyLinkedList<T> {
     let curr = this.head;
     let index = 0;
     while (curr) {
-      if (curr.val === val) {
+      if (this.comparator.equal(curr.val, val)) {
         return index;
       }
       curr = curr.next;
@@ -269,5 +255,3 @@ class SinglyLinkedList<T> {
     this.size = 0;
   }
 }
-
-export default SinglyLinkedList;

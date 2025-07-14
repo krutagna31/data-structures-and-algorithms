@@ -1,8 +1,8 @@
 import { test, expect } from "@jest/globals";
-import bubbleSort from "../bubble-sort";
-import selectionSort from "../selection-sort";
-import insertionSort from "../insertion-sort";
-import mergeSort from "../merge-sort";
+import bubbleSort from "@/algorithms/sorting/bubble-sort";
+import selectionSort from "@/algorithms/sorting/selection-sort";
+import insertionSort from "@/algorithms/sorting/insertion-sort";
+import mergeSort from "@/algorithms/sorting/merge-sort";
 
 test("should not change the array which is already sorted in ascending order", () => {
   expect(bubbleSort([1, 2, 3])).toEqual([1, 2, 3]);

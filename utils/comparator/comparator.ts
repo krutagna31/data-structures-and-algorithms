@@ -2,7 +2,7 @@
  * Class representing a comparator
  * @template {T} - The type of value to be compared
  */
-class Comparator<T> {
+export default class Comparator<T> {
   compare: (a: T, b: T) => number;
   /**
    * Creates a comparator instance
@@ -76,4 +76,3 @@ class Comparator<T> {
   }
 }
 
-export default Comparator;

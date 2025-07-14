@@ -4,7 +4,7 @@ import SinglyLinkedList from "@/data-structures/linked-list/singly-linked-list/s
  * Class representing a queue
  * @template T - The type of value stored in the node
  */
-class LinearQueue<T> extends SinglyLinkedList<T> {
+export default class LinearQueue<T> extends SinglyLinkedList<T> {
   /**
    * Adds element at the end of the queue
    * @param {T} value - The value to be added to the queue
@@ -39,4 +39,3 @@ class LinearQueue<T> extends SinglyLinkedList<T> {
   }
 }
 
-export default LinearQueue;

@@ -2,7 +2,7 @@
  * Class representing a graph
  * @template {T} - The type of value stored in the graph
  */
-class Graph<T> {
+export default class Graph<T> {
   adjacencyList: Map<T, T[]>;
 
   /**
@@ -62,4 +62,3 @@ class Graph<T> {
   }
 }
 
-export default Graph;
