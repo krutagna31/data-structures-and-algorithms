@@ -1,7 +1,7 @@
 /**
  * Class representing a trie node
  */
-class TrieNode {
+export default class TrieNode {
   charToNode: Map<string, TrieNode>;
   isEndOfWord: boolean;
 
@@ -13,5 +13,3 @@ class TrieNode {
     this.isEndOfWord = false;
   }
 } 
-
-export default TrieNode;

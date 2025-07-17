@@ -2,10 +2,10 @@
  * Class representing a node
  * @template {T} - The type of value stored in the nodek
  */
-class ListNode<T> {
+export default class DoublyListNode<T> {
   val: T;
-  prev: ListNode<T> | null;
-  next: ListNode<T> | null;
+  prev: DoublyListNode<T> | null;
+  next: DoublyListNode<T> | null;
 
   /**
    * Creates a node instance
@@ -18,4 +18,3 @@ class ListNode<T> {
   }
 }
 
-export default ListNode;

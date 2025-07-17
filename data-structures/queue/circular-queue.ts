@@ -2,7 +2,7 @@
  * Class representing a circular queue
  * @template T - The type of value stored in the circular queue
  */
-class CircularQueue<T> {
+export default class CircularQueue<T> {
   items: T[];
   front: number;
   rear: number;
@@ -79,4 +79,3 @@ class CircularQueue<T> {
   }
 }
 
-export default CircularQueue;

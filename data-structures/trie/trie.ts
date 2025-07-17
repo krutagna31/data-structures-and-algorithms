@@ -3,7 +3,7 @@ import TrieNode from "@/data-structures/trie/trie-node";
 /**
  * Class representing a trie
  */
-class Trie {
+export default class Trie {
   root: TrieNode;
 
   /**

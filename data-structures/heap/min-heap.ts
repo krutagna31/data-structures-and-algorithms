@@ -4,7 +4,7 @@ import Comparator from "@/utils/comparator/comparator";
  * Class representing a min heap
  * @template {T} - The type of value stored in the heap
  */
-class MinHeap<T> {
+export default class MinHeap<T> {
   comparator: Comparator<T>;
   values: T[];
 
@@ -188,4 +188,3 @@ class MinHeap<T> {
   }
 }
 
-export default MinHeap;

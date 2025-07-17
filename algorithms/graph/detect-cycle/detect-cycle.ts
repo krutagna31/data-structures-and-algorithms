@@ -13,18 +13,15 @@ export default function detectCycle(n: number, edges: [number, number][]): boole
     adjacencyList.set(i, []);
   }
 
-  // create the adjacency list
   for (const [vertex1, vertex2] of edges) {
     adjacencyList[vertex1].push(vertex2);
   }
 
   const _detectCycle = (vertex: number): boolean => {
-    // return true if cycle contains the vertex
     if (cycle.has(vertex)) {
       return true;
     }
     
-    // return false in the vertex has already been visited
     if (visit.has(vertex)) {
       return false;
     }

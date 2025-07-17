@@ -4,7 +4,7 @@ import Comparator from "@/utils/comparator/comparator";
  * Class representing a max heap
  * @template {T} - The type of value stored in the heap
  */
-class MaxHeap<T> {
+export default class MaxHeap<T> {
   comparator: Comparator<T>;
   values: T[];
 
@@ -188,4 +188,3 @@ class MaxHeap<T> {
   }
 }
 
-export default MaxHeap;

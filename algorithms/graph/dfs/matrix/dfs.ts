@@ -1,10 +1,9 @@
 /**
  * Performs a dfs traversal on a graph
- * @template T - The type of value stored in matrix
- * @param {string[][]} matrix - A 2D matrix representing the graph
+ * @param {number[][]} matrix - A 2D matrix representing the graph
  * @returns {void}
  */
-function dfs(matrix: string[][]): void {
+export default function dfs(matrix: number[][]): void {
   const rows = matrix.length;
   const cols = matrix[0].length;
   const visited = Array.from({ length: rows }, () =>
@@ -45,4 +44,3 @@ function dfs(matrix: string[][]): void {
   }
 }
 
-export default dfs;

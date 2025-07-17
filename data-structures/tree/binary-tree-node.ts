@@ -2,7 +2,7 @@
  * Class representing a node
  * @template {T} - The type of value stored in the node
  */
-class TreeNode<T> {
+export default class TreeNode<T> {
   val: T;
   left: TreeNode<T> | null;
   right: TreeNode<T> | null;
@@ -17,5 +17,3 @@ class TreeNode<T> {
     this.right = null;
   }
 }
-
-export default TreeNode;

@@ -2,11 +2,10 @@ import LinearQueue from "@/data-structures/queue/linear-queue";
 
 /**
  * Performs a single source bfs traversal on a graph
- * @template T - The type of value stored in matrix
- * @param {string[][]} matrix - A 2D matrix representing the graph
+ * @param {number[][]} matrix - A 2D matrix representing the graph
  * @returns {void}
  */
-function bfs<T>(matrix: T[][]): void {
+export default function bfs(matrix: number[][]): void {
   const rows = matrix.length;
   const cols = matrix[0].length;
   const visited = Array.from({ length: rows }, () =>
@@ -49,5 +48,3 @@ function bfs<T>(matrix: T[][]): void {
     }
   }
 }
-
-export default bfs;

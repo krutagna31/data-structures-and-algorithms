@@ -4,7 +4,7 @@ import TreeNode from "@/data-structures/tree/binary-tree-node";
  * Class representing a binary search tree
  * @template {T} - The type of value stored in the binary search tree
  */
-class BinarySearchTree<T> {
+export default class BinarySearchTree<T> {
   root: TreeNode<T> | null;
   constructor() {
     this.root = null;
@@ -135,4 +135,3 @@ class BinarySearchTree<T> {
   }
 }
 
-export default BinarySearchTree;
