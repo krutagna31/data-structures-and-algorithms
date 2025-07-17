@@ -1,4 +1,4 @@
-import TreeNode from "@/data-structures/tree/tree-node";
+import TreeNode from "@/data-structures/tree/binary-tree-node";
 
 /**
  * Performs a inorder traversal on a tree

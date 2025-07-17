@@ -2,9 +2,9 @@
  * Class representing a node
  * @template {T} - The type of value stored in the node
  */
-class ListNode<T> {
+export default class SinglyListNode<T> {
   val: T;
-  next: ListNode<T> | null;
+  next: SinglyListNode<T> | null;
 
   /**
    * Creates a node instance
@@ -15,6 +15,4 @@ class ListNode<T> {
     this.next = null;
   }
 }
-
-export default ListNode;
 

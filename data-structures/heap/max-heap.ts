@@ -5,16 +5,16 @@ import Comparator from "@/utils/comparator/comparator";
  * @template {T} - The type of value stored in the heap
  */
 class MaxHeap<T> {
-  values: T[];
   comparator: Comparator<T>;
+  values: T[];
 
   /**
    * Creates a max heap instance
    * @param {function(T, T):number} compareFunction - Optional custom comparator function
    */
   constructor(compareFunction?: (a: T, b: T) => number) {
-    this.values = [];
     this.comparator = new Comparator(compareFunction);
+    this.values = [];
   }
 
   /**

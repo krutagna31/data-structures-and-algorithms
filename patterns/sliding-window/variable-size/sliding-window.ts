@@ -10,7 +10,7 @@ function slidingWindow(nums: number[], k: number): void {
     // add nums[right] to the window
 
     while(true) {
-      // remove nums[left] from the window
+      // remove nums[left] from the window till window is invalid
       left++;
     }
 

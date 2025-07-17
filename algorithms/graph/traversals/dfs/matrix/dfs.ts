@@ -37,6 +37,9 @@ function dfs(matrix: string[][]): void {
 
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
+      if (visited[row][col]) {
+        continue;
+      }
       _dfs(row, col);
     }
   }

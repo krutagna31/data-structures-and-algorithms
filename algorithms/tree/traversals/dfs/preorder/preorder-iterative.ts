@@ -1,4 +1,4 @@
-import TreeNode from "@/data-structures/tree/tree-node";
+import TreeNode from "@/data-structures/tree/binary-tree-node";
 import Stack from "@/data-structures/stack/stack";
 
 /**
