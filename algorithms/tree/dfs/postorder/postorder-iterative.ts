@@ -7,10 +7,11 @@ import Stack from "@/data-structures/stack/stack";
  * @param {TreeNode<T> | null} root - The root of the binary tree
  * @returns {T[]} - An array of values in postorder traversal order
  */
-function postorder<T>(root: TreeNode<T> | null): T[] {
+export default function postorder<T>(root: TreeNode<T> | null): T[] {
   const values = [];
   const stack = new Stack<TreeNode<T> | null>();
   let curr = root;
+
   while (stack.size > 0 || curr) {
     if (curr) {
       values.push(curr.val);
@@ -20,7 +21,7 @@ function postorder<T>(root: TreeNode<T> | null): T[] {
       curr = stack.pop();
     }
   }
+  
   return values.reverse();
 }
 
-export default postorder;

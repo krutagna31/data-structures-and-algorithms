@@ -4,7 +4,7 @@
  * @returns - The sorted array in ascending order
  */
 
-function mergeSort(nums: number[]): number[] {
+export default function mergeSort(nums: number[]): number[] {
   if (nums.length <= 1) return nums;
   const mid = Math.floor(nums.length / 2);
   const leftNums = mergeSort(nums.slice(0, mid));
@@ -28,4 +28,3 @@ function merge(nums1: number[], nums2: number[]): number[] {
   return mergedNums;
 }
 
-export default mergeSort;

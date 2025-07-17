@@ -4,7 +4,7 @@
  * @returns - The sorted array in ascending order
  */
 
-function selectionSort(nums: number[]): number[] {
+export default function selectionSort(nums: number[]): number[] {
   for (let i = 0; i < nums.length - 1; i++) {
     let minIndex = i;
     for (let j = i + 1; j < nums.length; j++) {
@@ -19,4 +19,3 @@ function selectionSort(nums: number[]): number[] {
   return nums;
 }
 
-export default selectionSort;

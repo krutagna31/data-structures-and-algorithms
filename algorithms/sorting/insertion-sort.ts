@@ -4,7 +4,7 @@
  * @returns - The sorted array in ascending order
  */
 
-function insertionSort(nums: number[]): number[] {
+export default function insertionSort(nums: number[]): number[] {
   for (let i = 0; i < nums.length; i++) {
     let currVal = nums[i];
     let j = i - 1;
@@ -17,4 +17,3 @@ function insertionSort(nums: number[]): number[] {
   return nums;
 }
 
-export default insertionSort;

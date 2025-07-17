@@ -182,23 +182,6 @@ export default class SinglyLinkedList<T> {
   }
 
   /**
-   * Reverses the linked list
-   * @returns {void}
-   */
-  reverse(): void {
-    this.tail = this.head;
-    let curr = this.head;
-    let prev = null;
-    while (curr) {
-      const next = curr.next;
-      curr.next = prev;
-      prev = curr;
-      curr = next;
-    }
-    this.head = prev;
-  }
-
-  /**
    * Checks whether linked list contains a value
    * @param {T} val - The value which should exist in the linked list
    * @returns {boolean} - `true` if value exists in linked list, `false` otherwise
