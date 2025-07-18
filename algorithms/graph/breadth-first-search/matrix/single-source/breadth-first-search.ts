@@ -5,7 +5,7 @@ import LinearQueue from "@/data-structures/queue/linear-queue";
  * @param {number[][]} matrix - A 2D matrix representing the graph
  * @returns {void}
  */
-export default function bfs(matrix: number[][]): void {
+export default function breadthFirstSearch(matrix: number[][]): void {
   const rows = matrix.length;
   const cols = matrix[0].length;
   const visited = Array.from({ length: rows }, () =>

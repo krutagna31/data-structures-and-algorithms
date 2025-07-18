@@ -3,7 +3,7 @@
  * @param {number[][]} matrix - A 2D matrix representing the graph
  * @returns {void}
  */
-export default function dfs(matrix: number[][]): void {
+export default function depthFirstSearch(matrix: number[][]): void {
   const rows = matrix.length;
   const cols = matrix[0].length;
   const visited = Array.from({ length: rows }, () =>
@@ -16,7 +16,7 @@ export default function dfs(matrix: number[][]): void {
     [0, -1],
   ];
 
-  const _dfs = (row: number, col: number) => {
+  const _depthFirstSearch = (row: number, col: number) => {
     if (
       row < 0 ||
       row > rows - 1 ||
@@ -28,9 +28,9 @@ export default function dfs(matrix: number[][]): void {
     }
 
     visited[row][col] = true;
-    
+
     for (const [dx, dy] of directions) {
-      _dfs(row + dx, col + dy);
+      _depthFirstSearch(row + dx, col + dy);
     }
   };
 
@@ -39,8 +39,7 @@ export default function dfs(matrix: number[][]): void {
       if (visited[row][col]) {
         continue;
       }
-      _dfs(row, col);
+      _depthFirstSearch(row, col);
     }
   }
 }
-

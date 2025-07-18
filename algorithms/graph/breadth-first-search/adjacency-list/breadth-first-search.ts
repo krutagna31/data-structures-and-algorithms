@@ -6,7 +6,10 @@ import LinearQueue from "@/data-structures/queue/linear-queue";
  * @param {[number, number][]} edges - List of edges representing the graph
  * @returns {void}
  */
-export default function bfs(n: number, edges: [number, number][]): void {
+export default function breadthFirstSearch(
+  n: number,
+  edges: [number, number][]
+): void {
   const adjacencyList = new Map<number, number[]>();
   const visited = new Set<number>();
 
@@ -19,7 +22,7 @@ export default function bfs(n: number, edges: [number, number][]): void {
     adjacencyList.get(vertex2).push(vertex1);
   }
 
-  const _bfs = (vertex: number): void => {
+  const _breadthFirstSearch = (vertex: number): void => {
     const queue = new LinearQueue<number>();
     queue.enqueue(vertex);
 
@@ -41,6 +44,6 @@ export default function bfs(n: number, edges: [number, number][]): void {
     if (visited.has(i)) {
       continue;
     }
-    _bfs(i);
+    _breadthFirstSearch(i);
   }
 }

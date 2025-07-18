@@ -4,7 +4,10 @@
  * @param {[number, number][]} edges - List of edges representing the graph
  * @returns {void}
  */
-export default function dfs(n: number, edges: [number, number][]): void {
+export default function depthFirstSearch(
+  n: number,
+  edges: [number, number][]
+): void {
   const adjacencyList = new Map<number, number[]>();
   const visited = new Set<number>();
 
@@ -17,7 +20,7 @@ export default function dfs(n: number, edges: [number, number][]): void {
     adjacencyList.get(vertex2).push(vertex1);
   }
 
-  const _dfs = (vertex: number): void => {
+  const _depthFirstSearch = (vertex: number): void => {
     if (visited.has(vertex)) {
       return;
     }
@@ -25,7 +28,7 @@ export default function dfs(n: number, edges: [number, number][]): void {
     visited.add(vertex);
 
     for (const neighbour of adjacencyList.get(vertex)) {
-      _dfs(neighbour);
+      _depthFirstSearch(neighbour);
     }
   };
 
@@ -33,7 +36,6 @@ export default function dfs(n: number, edges: [number, number][]): void {
     if (visited.has(i)) {
       continue;
     }
-    _dfs(i);
+    _depthFirstSearch(i);
   }
 }
-

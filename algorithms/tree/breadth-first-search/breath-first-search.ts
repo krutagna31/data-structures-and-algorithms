@@ -7,7 +7,7 @@ import LinearQueue from "@/data-structures/queue/linear-queue";
  * @param {TreeNode<T> | null} root - The root of the binary tree
  * @returns {T[][]} - An array of values in breadth first search traversal order
  */
-export default function bfs<T>(root: TreeNode<T> | null): T[][] {
+export default function breadthFirstSearch<T>(root: TreeNode<T> | null): T[][] {
   if (root === null) {
     return [];
   }
@@ -32,4 +32,3 @@ export default function bfs<T>(root: TreeNode<T> | null): T[][] {
   }
   return values;
 }
-
