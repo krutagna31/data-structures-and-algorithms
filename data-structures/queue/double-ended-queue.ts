@@ -11,7 +11,7 @@ export default class DoubleEndedQueue<T> {
 
   /**
    * Creates a double ended queue instance
-   * @param {number} maxSize - The stack of double ended queue
+   * @param {number} maxSize - The size of double ended queue
    */
   constructor(maxSize: number) {
     this.items = new Array(maxSize);
