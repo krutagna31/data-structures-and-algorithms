@@ -10,40 +10,40 @@ export default function topologicalSort(
   n: number,
   edges: number[][]
 ): number[] {
-  const result = [];
-  const stack = new Stack<number>();
   const adjancencyList = new Map<number, number[]>();
-  const visited = new Set<number>();
-
+  
   for (let i = 0; i < n; i++) {
     adjancencyList.set(i, []);
   }
-
+  
   for (const [vertex1, vertex2] of edges) {
     adjancencyList.get(vertex1).push(vertex2);
   }
-
+  
+  const stack = new Stack<number>();
+  const visited = new Set<number>();
   const _topologicalSort = (vertex: number): void => {
     if (visited.has(vertex)) {
       return;
     }
-
+    
     visited.add(vertex);
-
+    
     for (const neighbour of adjancencyList.get(vertex)) {
       _topologicalSort(neighbour);
     }
-
+    
     stack.push(vertex);
   };
-
+  
   for (let i = 0; i < n; i++) {
     if (visited.has(i)) {
       return;
     }
     _topologicalSort(i);
   }
-
+  
+  const result = [];
   while (stack.size > 0) {
     result.push(stack.pop());
   }
